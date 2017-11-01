@@ -9,3 +9,4 @@ Screenshot portrait:
 
 Screenshot landscape:
 
+![alt text](https://raw.githubusercontent.com/sietzeberends/sietzeberendsproblemset1/master/screenshot%20landscape.png)

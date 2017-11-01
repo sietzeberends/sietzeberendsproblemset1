@@ -7,4 +7,4 @@ Screenshot portrait:
 
 Screenshot landscape:
 
-![]({{site.baseurl}}/https://raw.githubusercontent.com/sietzeberends/sietzeberendsproblemset1/master/screenshot%20landscape.png)
+![]({{site.baseurl}}/https://raw.githubusercontent.com/sietzeberends/sietzeberendsproblemset1/master/screenshot%20portrait.png)

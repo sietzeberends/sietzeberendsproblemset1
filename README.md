@@ -7,7 +7,7 @@ app supports preserving data on rotation
 
 screenshot portrait:
 
-![]({{site.baseurl}}//Screenshot_2017-11-01-10-41-57.png)
+![]({{site.baseurl}}//Screenshot_2017-11-01-10-41-45.png)
 
 screenshot landscape:
 

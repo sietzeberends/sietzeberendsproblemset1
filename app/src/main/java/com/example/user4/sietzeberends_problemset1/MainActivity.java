@@ -9,10 +9,12 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    // arrays to keep track of all images and checkboxes
     ImageView[] images = new ImageView[10];
     CheckBox[] checkBoxes = new CheckBox[10];
-    LinearLayout layout;
 
+    // all the bodyparts
+    ImageView image;
     ImageView arms;
     ImageView body;
     ImageView ears;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView nose;
     ImageView shoes;
 
+    // all the checkboxes
     CheckBox chArms;
     CheckBox chBody;
     CheckBox chEars;
@@ -41,28 +44,32 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        layout = findViewById(R.id.linearLayout);
-        arms = (ImageView) findViewById(R.id.armsImage);
-        ears = (ImageView) findViewById(R.id.earsImage);
-        eyebrows = (ImageView) findViewById(R.id.eyebrowsImage);
-        eyes = (ImageView) findViewById(R.id.eyesImage);
-        glasses = (ImageView) findViewById(R.id.glassesImage);
-        hat = (ImageView) findViewById(R.id.hatImage);
-        mouth = (ImageView) findViewById(R.id.mouthImage);
-        mustache = (ImageView) findViewById(R.id.mustacheImage);
-        nose = (ImageView) findViewById(R.id.noseImage);
-        shoes = (ImageView) findViewById(R.id.shoesImage);
-        chArms = (CheckBox) findViewById(R.id.armsCb);
-        chEars = (CheckBox) findViewById(R.id.earsCb);
-        chEyebrows = (CheckBox) findViewById(R.id.eyebrowsCb);
-        chEyes = (CheckBox) findViewById(R.id.eyesCb);
-        chGlasses = (CheckBox) findViewById(R.id.glassesCb);
-        chHat = (CheckBox) findViewById(R.id.hatCb);
-        chMouth = (CheckBox) findViewById(R.id.mouthCb);
-        chMustache = (CheckBox) findViewById(R.id.mustacheCb);
-        chNose = (CheckBox) findViewById(R.id.noseCb);
-        chShoes = (CheckBox) findViewById(R.id.shoesCb);
 
+        // instantiate all the bodyparts
+        arms = findViewById(R.id.armsImage);
+        ears = findViewById(R.id.earsImage);
+        eyebrows = findViewById(R.id.eyebrowsImage);
+        eyes = findViewById(R.id.eyesImage);
+        glasses = findViewById(R.id.glassesImage);
+        hat = findViewById(R.id.hatImage);
+        mouth = findViewById(R.id.mouthImage);
+        mustache = findViewById(R.id.mustacheImage);
+        nose = findViewById(R.id.noseImage);
+        shoes = findViewById(R.id.shoesImage);
+
+        // instantiate all the checkboxes
+        chArms = findViewById(R.id.armsCb);
+        chEars = findViewById(R.id.earsCb);
+        chEyebrows = findViewById(R.id.eyebrowsCb);
+        chEyes = findViewById(R.id.eyesCb);
+        chGlasses = findViewById(R.id.glassesCb);
+        chHat = findViewById(R.id.hatCb);
+        chMouth = findViewById(R.id.mouthCb);
+        chMustache = findViewById(R.id.mustacheCb);
+        chNose = findViewById(R.id.noseCb);
+        chShoes = findViewById(R.id.shoesCb);
+
+        // keep track of all the bodyparts
         images[0] = arms;
         images[1] = ears;
         images[2] = eyebrows;
@@ -74,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         images[8] = nose;
         images[9] = shoes;
 
+        // keep track of all the checkboxes
         checkBoxes[0] = chArms;
         checkBoxes[1] = chEars;
         checkBoxes[2] = chEyebrows;
@@ -85,17 +93,9 @@ public class MainActivity extends AppCompatActivity {
         checkBoxes[8] = chNose;
         checkBoxes[9] = chShoes;
 
-        chArms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (((CheckBox) v).isChecked()) {
-                    arms.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-
+        // set OnClickListeners on the checkboxes, change visibility of the bodypart when clicked
         for (int i = 0; i < checkBoxes.length; i++) {
-            final ImageView image = images[i];
+            image = images[i];
             checkBoxes[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -108,18 +108,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-        chArms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (((CheckBox) v).isChecked()) {
-                    arms.setVisibility(View.VISIBLE);
-                } else {
-                    arms.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-    };
+    }
 
+    // save al the current visibility settings of all the bodyparts
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -128,27 +119,18 @@ public class MainActivity extends AppCompatActivity {
             visibility[i] = images[i].getVisibility();
         }
         outState.putIntArray("visibility", visibility);
-
-        int currentOrientation = this.getResources().getConfiguration().orientation;
-        outState.putInt("orientation", currentOrientation);
     }
 
+    // restore all the visibility settings of all the bodyparts
     @Override
     public void onRestoreInstanceState(Bundle inState) {
         super.onRestoreInstanceState(inState);
         int visibility[] = inState.getIntArray("visibility");
 
         for (int i = 0; i < images.length; i++) {
-            images[i].setVisibility(visibility[i]);
+            if (visibility != null) {
+                images[i].setVisibility(visibility[i]);
+            }
         }
-
-        int orientation = inState.getInt("orientation");
-
-        /*if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-            layout.setOrientation(LinearLayout.VERTICAL);
-        }
-        else {
-            layout.setOrientation(LinearLayout.VERTICAL);
-        }*/
     }
 }

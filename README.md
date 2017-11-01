@@ -1,9 +1,6 @@
 # sietzeberendsproblemset1
 
-app that displays 'Mr Potato Head'
-user can dis-/enable certain parts of Mr Potato Head
-app supports rotation
-app supports preserving data on rotation
+App that displays 'Mr Potato Head'. User can dis-/enable certain parts of Mr Potato Head. App supports rotation. App preserves data on rotation.
 
 screenshot portrait:
 
